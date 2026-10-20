@@ -1,0 +1,28 @@
+<template>
+
+   <lightning-spinner alternative-text="Loading" size="medium" lwc:if={showSpinner}></lightning-spinner>
+
+   <div lwc:if={firstStage}>
+      <lightning-input type="text" label="FirstName" value={firstName} onchange={handleChangeFisrtName}
+         placeholder="digite seu primeiro nome"></lightning-input>
+      <lightning-input type="text" label="LastName" value={lastName} onchange={handleChangeLastName}
+         placeholder="digite seu ultimo nome"></lightning-input>
+      <lightning-input type="tel" label="Phone" value={phone} onchange={handleChangePhone}
+         placeholder="digite seu número"></lightning-input>
+      <lightning-button label="Avançar" onclick={handleSaveClient}></lightning-button>
+   </div>
+
+
+   <div lwc:if={secondStage}>
+      <lightning-select name="tickets" label="Choose your flavor" value={value} options={options}
+         onchange={handleChangeSelect} required></lightning-select>
+
+      <template lwc:if={description}>
+         <p>{description}</p>
+         <p>Preço: R$ {price}</p>
+      </template>
+
+      <lightning-button label="Confirm" onclick={handleSaveFlavor}></lightning-button>
+   </div>
+
+</template>
